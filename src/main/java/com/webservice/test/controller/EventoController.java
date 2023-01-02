@@ -57,9 +57,9 @@ public class EventoController {
 	}
 	
 	@CrossOrigin(origins = "http://localhost:4200")
-	@PutMapping("/delete/{idEvento}")
-	public ResponseEntity<Evento> delete(@PathVariable("idEvento") int idEvento){
-		Optional<Evento> optionalEvento = eventoService.getEvento(idEvento);
+	@PutMapping("/delete")
+	public ResponseEntity<Evento> delete(@RequestBody Evento evento){
+		Optional<Evento> optionalEvento = eventoService.getEvento(evento.getIdEvento());
 		if(optionalEvento.isPresent()) {
 			Evento updateEvento = optionalEvento.get();
 			updateEvento.setEstado("I");
